@@ -81,7 +81,6 @@ fun TaskDetailDialog(
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                // Event Info
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Box(
                         modifier = Modifier
@@ -97,7 +96,6 @@ fun TaskDetailDialog(
 
                 Spacer(modifier = Modifier.height(8.dp))
 
-                // Date & Time
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
                         text = date,
