@@ -3,7 +3,7 @@ name: Build and Release APK
 on:
   push:
     tags:
-      - 'v*'  # Only run on version tags like v1.0.0
+      - 'v*'
 
 jobs:
   build:
@@ -27,14 +27,17 @@ jobs:
         run: chmod +x ./gradlew
 
       - name: Build APK
-        run: ./gradlew assembleRelease
+        run: ./gradlew :composeApp:assembleRelease
 
-      - name: Rename APK Output (Optional)
+      - name: Debug APK location
+        run: find . -name "*.apk"
+
+      - name: Copy APK to output folder
         run: |
           mkdir -p output
-          cp ./androidApp/build/outputs/apk/release/*.apk ./output/app-release.apk
+          cp ./composeApp/build/outputs/apk/release/*.apk ./output/app-release.apk
 
-      - name: Create Release and Upload APK
+      - name: Create GitHub Release and Upload APK
         uses: softprops/action-gh-release@v1
         with:
           name: Release ${{ github.ref_name }}
