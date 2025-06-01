@@ -22,17 +22,18 @@ import org.example.project.componants.CustomAppBar
 import org.example.project.componants.EditTaskDialog
 import org.example.project.componants.TaskDetailDialog
 import org.example.project.componants.TaskItem
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
-    var isCompleted by remember { mutableStateOf(false) }
     var showMainDialogue by remember { mutableStateOf(false) }
     var showDeleteDialogue by remember { mutableStateOf(false) }
     var showEditDialog by remember { mutableStateOf(false) }
     var selectedTitle by remember { mutableStateOf("") }
     var selectedDate by remember { mutableStateOf("") }
     var selectedId by remember { mutableStateOf("") }
+
 
 
 
@@ -80,7 +81,6 @@ fun HomeScreen(modifier: Modifier = Modifier) {
                 initialDate = selectedDate,
                 onDismiss = { showEditDialog = false },
                 onSave = { newTitle, newDate ->
-
                     showEditDialog = false
                 })
         }
@@ -91,12 +91,11 @@ fun HomeScreen(modifier: Modifier = Modifier) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             LazyColumn {
-                items(10) {
+                items(20) {
                     TaskItem(
                         id = "",
                         title = "Morning Exercise / Jogging",
-                        date = "6:00am",
-                        isCompleted = isCompleted,
+                        date = "6:00 am 31 Dec 2025",
                         onItemClick = { id ->
                             selectedTitle = "Morning Exercise / Jogging"
                             selectedDate = "6:00am"
@@ -109,4 +108,11 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 
     }
 
+}
+
+
+@Preview
+@Composable
+fun PreviewHome(modifier: Modifier = Modifier) {
+    HomeScreen()
 }
