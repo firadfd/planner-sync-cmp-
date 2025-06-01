@@ -44,6 +44,10 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.datetime.wheel.picker)
+            implementation(libs.kotlinx.datetime)
+            implementation(libs.androidx.material3)
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
