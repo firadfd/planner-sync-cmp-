@@ -33,6 +33,10 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+            implementation(libs.androidx.navigation3.runtime)
+            implementation(libs.androidx.navigation3.ui)
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -46,7 +50,10 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.datetime.wheel.picker)
             implementation(libs.kotlinx.datetime)
-            implementation(libs.androidx.material3)
+
+//            implementation(libs.androidx.navigation3.runtime)
+//            implementation(libs.androidx.navigation3.ui)
+            implementation(libs.kotlinx.serialization.core)
 
         }
         commonTest.dependencies {
@@ -57,12 +64,12 @@ kotlin {
 
 android {
     namespace = "org.example.project"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "org.example.project"
         minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
     }
