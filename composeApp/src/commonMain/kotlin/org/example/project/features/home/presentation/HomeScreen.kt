@@ -26,7 +26,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(modifier: Modifier = Modifier) {
+fun HomeScreen(onItemClick: (String) -> Unit, modifier: Modifier = Modifier) {
     var showMainDialogue by remember { mutableStateOf(false) }
     var showDeleteDialogue by remember { mutableStateOf(false) }
     var showEditDialog by remember { mutableStateOf(false) }
@@ -38,7 +38,9 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 
 
     Scaffold(modifier = modifier, topBar = {
-        CustomAppBar("Good Morning", "Here’s what's coming up today.", onNotificationCLick = {})
+        CustomAppBar("Good Morning", "Here’s what's coming up today.", onNotificationCLick = {
+            onItemClick("10")
+        })
     }) { paddingValue ->
 
         if (showMainDialogue) {
@@ -110,9 +112,3 @@ fun HomeScreen(modifier: Modifier = Modifier) {
 
 }
 
-
-@Preview
-@Composable
-fun PreviewHome(modifier: Modifier = Modifier) {
-    HomeScreen()
-}
